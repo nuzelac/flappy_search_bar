@@ -319,6 +319,9 @@ class _SearchBarState<T> extends State<SearchBar<T>>
       _loading = false;
       _animate = false;
     });
+    if (widget.onSearch != null && widget.minimumChars == 0) {
+      searchBarController._search("", widget.onSearch);
+    }
   }
 
   Widget _buildListView(
