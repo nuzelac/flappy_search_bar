@@ -253,6 +253,9 @@ class _SearchBarState<T> extends State<SearchBar<T>>
     searchBarController =
         widget.searchBarController ?? SearchBarController<T>();
     searchBarController.setListener(this);
+    if (widget.onSearch != null && widget.minimumChars == 0) {
+      searchBarController._search("", widget.onSearch);
+    }
   }
 
   @override
