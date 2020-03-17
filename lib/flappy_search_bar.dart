@@ -358,7 +358,7 @@ class _SearchBarState<T> extends State<SearchBar<T>>
         Padding(
           padding: widget.searchBarPadding,
           child: Container(
-            height: 80,
+            height: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
