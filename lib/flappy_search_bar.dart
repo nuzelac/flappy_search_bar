@@ -403,25 +403,6 @@ class _SearchBarState<T> extends State<SearchBar<T>>
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: _cancel,
-                  child: AnimatedOpacity(
-                    opacity: _animate ? 1.0 : 0,
-                    curve: Curves.easeIn,
-                    duration: Duration(milliseconds: _animate ? 1000 : 0),
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 200),
-                      width:
-                          _animate ? MediaQuery.of(context).size.width * .2 : 0,
-                      child: Container(
-                        color: Colors.transparent,
-                        child: Center(
-                          child: widget.cancellationWidget,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
