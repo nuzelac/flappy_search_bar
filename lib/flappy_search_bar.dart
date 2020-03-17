@@ -3,7 +3,6 @@ library flappy_search_bar;
 import 'dart:async';
 
 import 'package:async/async.dart';
-import 'package:flappy_search_bar/scaled_tile.dart';
 import 'package:flutter/material.dart';
 
 import 'search_bar_style.dart';
@@ -107,9 +106,6 @@ class SearchBarController<T> {
   }
 }
 
-/// Signature for a function that creates [ScaledTile] for a given index.
-typedef ScaledTile IndexedScaledTileBuilder(int index);
-
 class SearchBar<T> extends StatefulWidget {
   /// Future returning searched items
   final Future<List<T>> Function(String text) onSearch;
@@ -171,10 +167,6 @@ class SearchBar<T> extends StatefulWidget {
   /// Weather the list should take the minimum place or not
   final bool shrinkWrap;
 
-  /// Called to get the tile at the specified index for the
-  /// [SliverGridStaggeredTileLayout].
-  final IndexedScaledTileBuilder indexedScaledTileBuilder;
-
   /// Set the scrollDirection
   final Axis scrollDirection;
 
@@ -215,7 +207,6 @@ class SearchBar<T> extends StatefulWidget {
     this.searchBarStyle = const SearchBarStyle(),
     this.crossAxisCount = 1,
     this.shrinkWrap = false,
-    this.indexedScaledTileBuilder,
     this.scrollDirection = Axis.vertical,
     this.mainAxisSpacing = 0.0,
     this.crossAxisSpacing = 0.0,
