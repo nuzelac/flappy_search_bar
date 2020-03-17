@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:async/async.dart';
 import 'package:flappy_search_bar/scaled_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'search_bar_style.dart';
 
@@ -315,22 +314,13 @@ class _SearchBarState<T> extends State<SearchBar<T>>
   Widget _buildListView(
       List<T> items, Widget Function(T item, int index) builder) {
     return Padding(
-      padding: widget.listPadding,
-      child: StaggeredGridView.countBuilder(
-        crossAxisCount: widget.crossAxisCount,
-        itemCount: items.length,
-        shrinkWrap: widget.shrinkWrap,
-        staggeredTileBuilder:
-            widget.indexedScaledTileBuilder ?? (int index) => ScaledTile.fit(1),
-        scrollDirection: widget.scrollDirection,
-        mainAxisSpacing: widget.mainAxisSpacing,
-        crossAxisSpacing: widget.crossAxisSpacing,
-        addAutomaticKeepAlives: true,
-        itemBuilder: (BuildContext context, int index) {
-          return builder(items[index], index);
-        },
-      ),
-    );
+        padding: widget.listPadding,
+        child: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return builder(items[index], index);
+          },
+          itemCount: items.length,
+        ));
   }
 
   Widget _buildContent(BuildContext context) {
