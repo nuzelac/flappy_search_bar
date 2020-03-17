@@ -160,12 +160,6 @@ class SearchBar<T> extends StatefulWidget {
   /// Text style of the text in the search bar
   final TextStyle textStyle;
 
-  /// Widget shown for cancellation
-  final Widget cancellationWidget;
-
-  /// Callback when cancel button is triggered
-  final VoidCallback onCancelled;
-
   /// Controller used to be able to sort, filter or replay the search
   final SearchBarController searchBarController;
 
@@ -306,10 +300,6 @@ class _SearchBarState<T> extends State<SearchBar<T>>
   }
 
   void _cancel() {
-    if (widget.onCancelled != null) {
-      widget.onCancelled();
-    }
-
     setState(() {
       _searchQueryController.clear();
       _list.clear();
